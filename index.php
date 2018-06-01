@@ -36,13 +36,13 @@ function showUser(str) {
 $(document).ready(function(){
 			$("#newClientButton").click(function(){
 				$("#newClientFormDiv").fadeIn("slow");
-				$("#txtHint").fadeOut("fast");
+				$("#txtHint").hide();
 			});
 		
 	
 	$(".clientNameDiv").click(function(){
-				$("#newClientFormDiv").fadeOut("fast");
-				$("#txtHint").fadeIn("slow");
+				$("#newClientFormDiv").hide();
+				$("#txtHint").fadeIn("fast");
 			});
 		});
 </script>

@@ -12,9 +12,9 @@
 	<script>
 		$(document).ready(function(){
 			$("button").click(function(){
-				$("#signUpFormDiv").fadeIn("slow");
-				$("#signInFormDiv").fadeOut("fast");
-				$("#signUpButton").fadeOut("fast");
+				$("#signUpFormDiv").fadeIn("fast");
+				$("#signInFormDiv").hide();
+				$("#signUpButton").hide();
 			});
 		});
 		
