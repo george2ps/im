@@ -10,6 +10,7 @@ include('home_page_server.php');
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insurance Manager</title>
 <link rel="stylesheet" href="style/homePage.css" type="text/css">
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 <script>
 function showUser(str) {
   if (str=="") {
@@ -30,6 +31,19 @@ function showUser(str) {
   xmlhttp.open("GET","get_user.php?q="+str,true);
   xmlhttp.send();
 }
+	
+$(document).ready(function(){
+			$("#newClientButton").click(function(){
+				$("#newClientFormDiv").fadeIn("slow");
+				$("#txtHint").fadeOut("fast");
+			});
+		
+	
+	$(".clientNameDiv").click(function(){
+				$("#newClientFormDiv").fadeOut("fast");
+				$("#txtHint").fadeIn("slow");
+			});
+		});
 </script>
 </head>
 
@@ -64,10 +78,13 @@ function showUser(str) {
 </div>-->
 			</div>
 			<div style="margin-left: 300px; border: 1px solid green; height: 60px; padding:15px;">
-				<button class="clientButtons">New Client+</button>
+				<button id="newClientButton" class="clientButtons">New Client+</button>
 				<button class="clientButtons">Edit Client</button>
 				<button class="clientButtons">Appointment</button>
 				
+			</div>
+			<div id="newClientFormDiv" style="margin-left: 300px; border: 1px solid blue; height: 60px; padding:15px; display: none;">
+		
 			</div>
 			<div id="txtHint" style="margin-left: 300px; border: 1px solid red; padding: 70px;">
 				<center><img style="opacity: 0.3; width: 350px;" src="style/images/cypro_transparent_logo.png"></center>
