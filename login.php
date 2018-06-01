@@ -23,7 +23,7 @@
 <body>
 	
 	<center><br>
-	<h1 style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'">Insurance Mono OMONOIA Manager</h1>
+	<h1 style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'">Insurance Manager</h1>
 	<div id="mainContainer" style="padding-top: 100px;">
 	<div id="signInFormDiv">
 		<form action="login_server.php" method="post">
