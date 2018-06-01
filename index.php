@@ -10,6 +10,7 @@ include('home_page_server.php');
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insurance Manager</title>
 <link rel="stylesheet" href="style/homePage.css" type="text/css">
+<link rel="stylesheet" href="style/loginPage.css" type="text/css">
 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 <script>
 function showUser(str) {
@@ -77,16 +78,33 @@ $(document).ready(function(){
 <span style=" padding: 15px; float: right; margin-right: 40px;">Antonis Papayiannis</span>
 </div>-->
 			</div>
-			<div style="margin-left: 300px; border: 1px solid green; height: 60px; padding:15px;">
+			<div style="margin-left: 300px; height: 40px; padding:15px;">
 				<button id="newClientButton" class="clientButtons">New Client+</button>
 				<button class="clientButtons">Edit Client</button>
 				<button class="clientButtons">Appointment</button>
 				
 			</div>
-			<div id="newClientFormDiv" style="margin-left: 300px; border: 1px solid blue; height: 60px; padding:15px; display: none;">
-		
+			<div id="newClientFormDiv" style="margin-left: 300px;  padding:15px; padding-top: 0px; display: none;">
+				<h1>New Client</h1>
+				<form action="client_registration_server.php" method="post">
+					<table>
+						<td>
+							<tr>
+								<input class="newClientInputs" type="text" placeholder="Firstname" name="clientFirstname"><span> </span>
+								<input class="newClientInputs" type="text" placeholder="Lastname" name="clientLastname"><span> </span>
+								<input class="newClientInputs" type="email" placeholder="Email address" name="clientEmail"><span> </span>
+								<input class="newClientInputs" type="tel" placeholder="Phone Number" name="clientPhone">
+							</tr>
+						</td>
+						
+					</table>
+					<input class="loginInputsButton" type="submit" value="Submit">
+				</form>
+				
+				
+				
 			</div>
-			<div id="txtHint" style="margin-left: 300px; border: 1px solid red; padding: 70px;">
+			<div id="txtHint" style="margin-left: 300px; padding: 70px;">
 				<center><img style="opacity: 0.3; width: 350px;" src="style/images/cypro_transparent_logo.png"></center>
 				<!--<img id="profilePictureOfSelectedClient" src="">
 				<span id="nameOfSelectedClient">George Sofroniou</span><br><br><br><br><br>

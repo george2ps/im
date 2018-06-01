@@ -62,3 +62,12 @@ body{
 	border-radius: 5px;
 	cursor: pointer;
 }
+
+.newClientInputs{
+	width: 200px;
+	font-size: 12pt;
+	padding: 5px;
+	border-radius: 5px;
+	border: 0.5px solid #454545;
+	margin-top: 10px;
+}
