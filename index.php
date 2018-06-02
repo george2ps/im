@@ -32,11 +32,38 @@ function showUser(str) {
   xmlhttp.open("GET","get_user.php?q="+str,true);
   xmlhttp.send();
 }
+
+	
+function showEditButton(str) {
+  document.getElementById("editClientButton").setAttribute("onClick", "editClient(\'"+str+"\')");
+ document.getElementById("editClientButton").disabled = false;
+}
+	
+function editClient(str) {
+  if (str=="") {
+    document.getElementById("txtHint").innerHTML="";
+    return;
+  } 
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("txtHint").innerHTML=this.responseText;
+    }
+  }
+  xmlhttp.open("GET","edit_user.php?e="+str,true);
+  xmlhttp.send();
+}
 	
 $(document).ready(function(){
 			$("#newClientButton").click(function(){
 				$("#newClientFormDiv").fadeIn("slow");
 				$("#txtHint").hide();
+				document.getElementById("editClientButton").disabled = true;
 			});
 		
 	
@@ -80,7 +107,7 @@ $(document).ready(function(){
 			</div>
 			<div style="margin-left: 300px; height: 40px; padding:15px;">
 				<button id="newClientButton" class="clientButtons">New Client+</button>
-				<button class="clientButtons">Edit Client</button>
+				<button id="editClientButton" class="clientButtons" onClick="editClient()" disabled>Edit Client</button>
 				<button class="clientButtons">Appointment</button>
 				
 			</div>
@@ -104,8 +131,9 @@ $(document).ready(function(){
 				
 				
 			</div>
-			<div id="txtHint" style="margin-left: 300px; padding: 70px;">
+			<div id="txtHint" style="margin-left: 300px; padding: 10px;">
 				<center><img style="opacity: 0.3; width: 350px;" src="style/images/cypro_transparent_logo.png"></center>
+				
 				<!--<img id="profilePictureOfSelectedClient" src="">
 				<span id="nameOfSelectedClient">George Sofroniou</span><br><br><br><br><br>
 				<p id="infoOfSelectedClient">Email:<span>george.sofroniou15@gmail.com</span></p>-->
