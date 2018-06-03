@@ -39,10 +39,30 @@ function showEditButton(str) {
  document.getElementById("editClientButton").disabled = false;
 }
 	
+	
 function editClient(str) {
   if (str=="") {
     document.getElementById("txtHint").innerHTML="";
     return;
+  } 
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("txtHint").innerHTML=this.responseText;
+    }
+  }
+  xmlhttp.open("GET","edit_user.php?e="+str,true);
+  xmlhttp.send();
+}
+	
+function deleteClient(str) {
+  if (str=="") {
+   
   } 
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -138,6 +158,7 @@ $(document).ready(function(){
 				<span id="nameOfSelectedClient">George Sofroniou</span><br><br><br><br><br>
 				<p id="infoOfSelectedClient">Email:<span>george.sofroniou15@gmail.com</span></p>-->
 			</div>
+		
 	</div>
 	
 	<br><br><br>

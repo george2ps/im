@@ -14,6 +14,7 @@ $query = mysqli_query($conn, "SELECT * FROM client_info WHERE email='$e' AND ins
 	$row = mysqli_fetch_assoc($query);
 	$clientEmail = $row['email'];
 	$_SESSION['clientCurrentEmail'] = $clientEmail;
+	$email1 = "\'".$clientEmail."\'";
 	$clientFirstname = $row['firstname'];
 	$clientLastname = $row['lastname'];
 
@@ -30,6 +31,8 @@ echo '<h1>Edit Client</h1>
 						
 					</table>
 					<input class="loginInputsButton" type="submit" value="Submit">
-				</form>';
-	
+					
+					<button id="deleteClientButton" onClick="deleteClient('.$email1.')" style="color: red; width: 200px" class="clientButtons">Delete Client</button>
+				</form>
+	';
 	?>
