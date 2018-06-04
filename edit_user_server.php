@@ -21,6 +21,6 @@ session_start();
 	</div>';
 
 	$query5 = mysqli_query($conn, "UPDATE client_info SET firstname='$firstname', lastname='$lastname', email='$email', html_element='$htmlElement' WHERE insurer_email='$username' AND email='$currentClientEmail'");
-	
+
 	header("location: index.php");
 ?>

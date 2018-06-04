@@ -23,8 +23,9 @@
 <body>
 	
 	<center><br>
+	<img style="width: 120px;" src="style/images/im_logo.png">
 	<h1 style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'">Insurance Manager</h1>
-	<div id="mainContainer" style="padding-top: 100px;">
+	<div id="mainContainer" style="padding-top: 10px;">
 	<div id="signInFormDiv">
 		<form action="login_server.php" method="post">
 			<input class="loginInputs" type="text" placeholder="Email" name="email" required><br>
@@ -50,13 +51,10 @@
 	</div>
 	</center>
 	
-	
-	
-	
 </body>
 	<div>
 	<center>
-		<footer style=" margin-bottom: 5px; display: block; font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'">
+		<footer style=" margin-top:-30px;  display: block; font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'">
 			Copyright © 2018 <img style="width: 15px;" src="style/images/cypro_transparent_logo.png"> Cypro
 		</footer>
 	</center>

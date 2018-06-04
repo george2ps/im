@@ -39,6 +39,33 @@ function showEditButton(str) {
  document.getElementById("editClientButton").disabled = false;
 }
 	
+function deleteClient(str) {
+  if (str=="") {
+    document.getElementById("txtHint").innerHTML="";
+    return;
+  }
+if(confirm("Are you sure you want to delete the client?")){
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("txtHint").innerHTML=this.responseText;
+    }
+  }
+  xmlhttp.open("GET","delete_user.php?e="+str,true);
+  xmlhttp.send();
+$(document).ready(function () {
+    // Handler for .ready() called.
+    window.setTimeout(function () {
+        location.href = "index.php";
+    }, 2000);
+});
+}
+}
 	
 function editClient(str) {
   if (str=="") {
@@ -60,24 +87,7 @@ function editClient(str) {
   xmlhttp.send();
 }
 	
-function deleteClient(str) {
-  if (str=="") {
-   
-  } 
-  if (window.XMLHttpRequest) {
-    // code for IE7+, Firefox, Chrome, Opera, Safari
-    xmlhttp=new XMLHttpRequest();
-  } else { // code for IE6, IE5
-    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-  xmlhttp.onreadystatechange=function() {
-    if (this.readyState==4 && this.status==200) {
-      document.getElementById("txtHint").innerHTML=this.responseText;
-    }
-  }
-  xmlhttp.open("GET","edit_user.php?e="+str,true);
-  xmlhttp.send();
-}
+
 	
 $(document).ready(function(){
 			$("#newClientButton").click(function(){
@@ -151,8 +161,8 @@ $(document).ready(function(){
 				
 				
 			</div>
-			<div id="txtHint" style="margin-left: 300px; padding: 10px;">
-				<center><img style="opacity: 0.3; width: 350px;" src="style/images/cypro_transparent_logo.png"></center>
+			<div id="txtHint" style="margin-left: 300px; padding: 10px; padding-top: 0px;">
+				<center><img style="opacity: 0.3; width: 350px;" src="style/images/im_logo.png"></center>
 				
 				<!--<img id="profilePictureOfSelectedClient" src="">
 				<span id="nameOfSelectedClient">George Sofroniou</span><br><br><br><br><br>
