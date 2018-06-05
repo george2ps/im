@@ -147,10 +147,10 @@ $(document).ready(function(){
 					<table>
 						<td>
 							<tr>
-								<input class="newClientInputs" type="text" placeholder="Firstname" name="clientFirstname"><span> </span>
-								<input class="newClientInputs" type="text" placeholder="Lastname" name="clientLastname"><span> </span>
-								<input class="newClientInputs" type="email" placeholder="Email address" name="clientEmail"><span> </span>
-								<input class="newClientInputs" type="tel" placeholder="Phone Number" name="clientPhone">
+								<input class="newClientInputs" type="text" placeholder="Firstname" name="clientFirstname" required><span> </span>
+								<input class="newClientInputs" type="text" placeholder="Lastname" name="clientLastname" required><span> </span>
+								<input class="newClientInputs" type="email" placeholder="Email address" name="clientEmail" required><span> </span>
+								<input class="newClientInputs" type="tel" placeholder="Phone Number" name="clientPhone" required>
 							</tr>
 						</td>
 						
