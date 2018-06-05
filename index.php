@@ -136,6 +136,7 @@ $(document).ready(function(){
     });
 
  });
+
 </script>
 </head>
 
@@ -156,7 +157,7 @@ $(document).ready(function(){
 	<br><br><br>
 	<div id="mainContainer">
 			<div id="clientListDiv" style="float: left;  overflow-y: scroll; height: 100%; width: 300px; position: fixed; background-color:#D7D7D7; padding-top: 20px; z-index: 1">
-				<center><input style="width: 85%; border-radius: 5px; border: 0.5px solid black; padding: 5px;" type="text" placeholder="Search clients"></center>
+				<center><input id="search_text" style="width: 85%; border-radius: 5px; border: 0.5px solid black; padding: 5px;" type="text" placeholder="Search clients"></center>
 				<br>
 			
 			<?php 
@@ -164,6 +165,7 @@ $(document).ready(function(){
 				echo($clientArray[$i]);
 				}
 			?>
+			
 <!--<div id="clientNameDiv" onClick="showUser('tony@gmail.com')" style="padding: 5px; border-top: 1px solid black;">
 <img  src="user_profile_pictures/default.png">
 <span style=" padding: 15px; float: right; margin-right: 40px;">Antonis Papayiannis</span>
