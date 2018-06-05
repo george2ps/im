@@ -102,6 +102,40 @@ $(document).ready(function(){
 				$("#txtHint").fadeIn("fast");
 			});
 		});
+	
+$(document).ready(function(){
+   $(".clientEmail").keyup(function(){
+
+      var uname = $(".clientEmail").val().trim();
+
+      if(uname != ''){
+
+         $(".uname_response").show();
+
+         $.ajax({
+            url: 'check_client_email.php',
+            type: 'post',
+            data: {uname:uname},
+            success: function(response){
+
+                if(response > 0){
+                    $(".uname_response").html("<span style='color:red; font-weight:bold;'>*Email Already in use.</span>");
+					document.getElementById("registerNewClientButton").disabled = true;	 			document.getElementById("registerNewClientButton").style="opacity:0.5;";
+					
+                }else{
+                    $(".uname_response").html("<span style='color:green; font-weight:bold;'>Available</span>");
+					document.getElementById("registerNewClientButton").disabled = false;	 			document.getElementById("registerNewClientButton").style="opacity:1;";
+                }
+
+             }
+          });
+      }else{
+         $(".uname_response").hide();
+      }
+
+    });
+
+ });
 </script>
 </head>
 
@@ -149,13 +183,14 @@ $(document).ready(function(){
 							<tr>
 								<input class="newClientInputs" type="text" placeholder="Firstname" name="clientFirstname" required><span> </span>
 								<input class="newClientInputs" type="text" placeholder="Lastname" name="clientLastname" required><span> </span>
-								<input class="newClientInputs" type="email" placeholder="Email address" name="clientEmail" required><span> </span>
+								<input class="newClientInputs clientEmail" type="email" placeholder="Email address" name="clientEmail" required><span class="uname_response"></span></input>
+								<span> </span>
 								<input class="newClientInputs" type="tel" placeholder="Phone Number" name="clientPhone" required>
 							</tr>
 						</td>
 						
 					</table>
-					<input class="loginInputsButton" type="submit" value="Submit">
+					<input id="registerNewClientButton" class="loginInputsButton" type="submit" value="Submit">
 				</form>
 				
 				

@@ -25,7 +25,7 @@ echo '<h1>Edit Client</h1>
 							<tr>
 								<input class="newClientInputs" type="text" placeholder="Firstname" name="clientFirstname" value="'.$clientFirstname.'"><span> </span>
 								<input class="newClientInputs" type="text" placeholder="Lastname" name="clientLastname" value="'.$clientLastname.'"><span> </span>
-								<input class="newClientInputs" type="email" placeholder="Email address" name="clientEmail" value="'.$clientEmail.'"><span> </span>
+								<input class="newClientInputs" type="email" placeholder="Email address" name="clientEmail" value="'.$clientEmail.'" readonly><span> </span>
 							</tr>
 						</td>
 						
@@ -33,6 +33,6 @@ echo '<h1>Edit Client</h1>
 					<input class="loginInputsButton" type="submit" value="Save">
 				</form>
 				<br>
-					<button class="clientButtons" style=" color:red; width:210px; font-weight:bold;" onClick="deleteClient(\''.$email1.'\')">Delete Client</button>
+					<button class="clientButtons" style=" color:white; background-color:red; width:210px; font-weight:bold;" onClick="deleteClient(\''.$email1.'\')">Delete Client</button>
 	';
 	?>
