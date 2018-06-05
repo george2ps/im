@@ -9,7 +9,8 @@ session_start();
 	$conn = new mysqli($servername, $usernameDb, $password, $db);
 	
 	$username = $_SESSION['login_user'];
-
+	if($username){
+	
 	$email=$_POST['clientEmail'];
 	$email1 = "\'".$email."\'";
 	$firstname=$_POST['clientFirstname'];
@@ -23,4 +24,7 @@ session_start();
 	$query5 = mysqli_query($conn, "INSERT INTO client_info (insurer_email, firstname, lastname, email, html_element) VALUES ('$username', '$firstname',  '$lastname', '$email', '$htmlElement')");
 	
 	header("location: index.php");
+	}else{
+		header("location: login.php");
+	}
 ?>
