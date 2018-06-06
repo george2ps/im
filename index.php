@@ -14,6 +14,13 @@ include('home_page_server.php');
 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 <script>
 function showUser(str) {
+		var x = document.getElementsByClassName("clientNameDiv");
+		var i;
+		for (i = 0; i < x.length; i++) {
+    	x[i].style.backgroundColor = "transparent";
+		}
+		document.getElementById(str).style.backgroundColor="aliceblue";
+
   if (str=="") {
     document.getElementById("txtHint").innerHTML="";
     return;
@@ -94,6 +101,11 @@ $(document).ready(function(){
 				$("#newClientFormDiv").fadeIn("slow");
 				$("#txtHint").hide();
 				document.getElementById("editClientButton").disabled = true;
+				var x = document.getElementsByClassName("clientNameDiv");
+		var i;
+		for (i = 0; i < x.length; i++) {
+    	x[i].style.backgroundColor = "transparent";
+		}
 			});
 		
 	
@@ -156,8 +168,8 @@ $(document).ready(function(){
 		</nav>
 	<br><br><br>
 	<div id="mainContainer">
-			<div id="clientListDiv" style="float: left;  overflow-y: scroll; height: 100%; width: 300px; position: fixed; background-color:#D7D7D7; padding-top: 20px; z-index: 1">
-				<center><input id="search_text" style="width: 85%; border-radius: 5px; border: 0.5px solid black; padding: 5px;" type="text" placeholder="Search clients"></center>
+			<div id="clientListDiv" style="float: left;  overflow-y: scroll; height: 90%; width: 300px; position: fixed; background-color:#D7D7D7; padding-top: 20px; z-index: 1">
+				<center><input id="search_text" style="width: 85%; border-radius: 3px; border: 0.5px solid #858585; padding: 7px;" type="text" placeholder="Search clients"></center>
 				<br>
 			
 			<?php 
@@ -198,7 +210,7 @@ $(document).ready(function(){
 				
 				
 			</div>
-			<div id="txtHint" style="margin-left: 300px; padding: 10px; padding-top: 0px;">
+			<div id="txtHint" style="margin-left: 300px; padding: 20px; padding-top: 0px;">
 				<center><img style="opacity: 0.3; width: 350px;" src="style/images/im_logo.png"></center>
 				
 				<!--<img id="profilePictureOfSelectedClient" src="">
