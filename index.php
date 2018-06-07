@@ -9,8 +9,8 @@ include('home_page_server.php');
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insurance Manager</title>
-<link rel="stylesheet" href="style/homePage.css" type="text/css">
-<link rel="stylesheet" href="style/loginPage.css" type="text/css">
+<link rel="stylesheet" href="style/homePage.css" type="text/css" version="1">
+<link rel="stylesheet" href="style/loginPage.css" type="text/css" version="3">
 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 <script>
 function showUser(str) {
@@ -20,6 +20,12 @@ function showUser(str) {
     	x[i].style.backgroundColor = "transparent";
 		}
 		document.getElementById(str).style.backgroundColor="aliceblue";
+		document.getElementById("txtHint").style.display="inherit";
+	
+var x = screen.width;
+	if(x<600){
+		document.getElementById("clientListDiv").style.display="none";
+	}
 
   if (str=="") {
     document.getElementById("txtHint").innerHTML="";
@@ -113,8 +119,30 @@ $(document).ready(function(){
 				$("#newClientFormDiv").hide();
 				$("#txtHint").fadeIn("fast");
 			});
-		});
+		
 	
+	$("#menuIconResponsiveDiv").click(function(){
+				$("#navBarMobile").fadeIn("fast");
+				
+			});
+	$("#newClientButtonMobile").click(function(){
+				$("#navBarMobile").hide();
+				$("#txtHint").hide();
+				$("#clientListDiv").hide();
+				$("#newClientFormDiv").fadeIn("fast");
+				
+				
+			});
+	
+	$("#clientListButton").click(function(){
+				$("#navBarMobile").hide();
+				$("#txtHint").hide();
+				$("#newClientFormDiv").hide("fast");
+				$("#clientListDiv").fadeIn("fast");
+				
+			});
+		
+	});
 $(document).ready(function(){
    $(".clientEmail").keyup(function(){
 
@@ -159,16 +187,29 @@ $(document).ready(function(){
 			<div id="logoutDiv">
 			<a href="logout.php"><img style="width: 28px; height: 30px; padding: 10px;" src="style/images/logout.png"></a>
 			</div>
-			
+			<div id="menuIconResponsiveDiv">
+				<img id="menuIconResponsive" class="profilePictureOfLoggedInUser" src="style/images/menu-icon.png">
+			</div>
 			<div style="padding: 5px;" id="userLoggedInDiv">
-				<img id="profilePictureOfLoggedInUser" src="<?php echo $profilePicture; ?>">
+				<img class="profilePictureOfLoggedInUser" src="<?php echo $profilePicture; ?>">
 				
 				<span id="nameOfUserLoggedIn"><?php echo $firstname." ".$lastname; ?></span>
 			</div>
 		</nav>
+	
+		<div id="navBarMobile">
+			<br>
+				<center><img style="width: 100px;" src="<?php echo $profilePicture; ?>"></center>
+			<span id="nameOfUserLoggedIn" style="padding-left: 50px;"><?php echo $firstname." ".$lastname; ?></span><br><br>
+			<ul style="color: white; margin: 0; padding: 0;">
+				<li id="newClientButtonMobile" style="border-top: 1px solid #282828; border-bottom: 1px solid #282828; background-color: black;list-style-type: none;  padding: 10px; margin: 0;">New Client+</li>
+				<li id="clientListButton" style="border-top: 1px solid #282828; border-bottom: 1px solid #282828; background-color: black;list-style-type: none;  padding: 10px; margin: 0;">Clients</li>
+			</ul>
+		</div>
+	
 	<br><br><br>
 	<div id="mainContainer">
-			<div id="clientListDiv" style="float: left;  overflow-y: scroll; height: 90%; width: 300px; position: fixed; background-color:#D7D7D7; padding-top: 20px; z-index: 1">
+			<div id="clientListDiv">
 				<center><input id="search_text" style="width: 85%; border-radius: 3px; border: 0.5px solid #858585; padding: 7px;" type="text" placeholder="Search clients"></center>
 				<br>
 			
@@ -183,13 +224,13 @@ $(document).ready(function(){
 <span style=" padding: 15px; float: right; margin-right: 40px;">Antonis Papayiannis</span>
 </div>-->
 			</div>
-			<div style="margin-left: 300px; height: 40px; padding:15px;">
+			<div id="clientButtonDiv">
 				<button id="newClientButton" class="clientButtons">New Client+</button>
 				<button id="editClientButton" class="clientButtons" onClick="editClient()" disabled>Edit Client</button>
 				<button class="clientButtons">Appointment</button>
 				
 			</div>
-			<div id="newClientFormDiv" style="margin-left: 300px;  padding:15px; padding-top: 0px; display: none;">
+			<div id="newClientFormDiv">
 				<h1>New Client</h1>
 				<form action="client_registration_server.php" method="post">
 					<table>
@@ -210,7 +251,7 @@ $(document).ready(function(){
 				
 				
 			</div>
-			<div id="txtHint" style="margin-left: 300px; padding: 20px; padding-top: 0px;">
+			<div id="txtHint">
 				<center><img style="opacity: 0.3; width: 350px;" src="style/images/im_logo.png"></center>
 				
 				<!--<img id="profilePictureOfSelectedClient" src="">
