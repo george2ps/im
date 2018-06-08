@@ -166,6 +166,9 @@ body{
 	.clientButtonsNotResponsive{
 	display: none;
 }
+	#calendarDiv{
+	display: none;
+}
 }
 
 

@@ -11,10 +11,102 @@ include('home_page_server.php');
 <title>Insurance Manager</title>
 <link rel="stylesheet" href="style/homePage.css" type="text/css" version="1">
 <link rel="stylesheet" href="style/loginPage.css" type="text/css" version="3">
-<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+ <link rel="stylesheet" href="style/fullcalendar.css" type="text/css" version="3">
+ 
 
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
 <script>
-	
+
+$(document).ready(function() {
+   var calendar = $('#calendar').fullCalendar({
+    editable:true,
+    header:{
+     left:'prev,next today',
+     center:'title',
+     right:'month,agendaWeek,agendaDay'
+    },
+    events: 'load.php',
+    selectable:true,
+    selectHelper:true,
+    select: function(start, end, allDay)
+    {
+     var title = prompt("Enter Event Title");
+     if(title)
+     {
+      var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+      var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+      $.ajax({
+       url:"insert.php",
+       type:"POST",
+       data:{title:title, start:start, end:end},
+       success:function()
+       {
+        calendar.fullCalendar('refetchEvents');
+        alert("Added Successfully");
+       }
+      })
+     }
+    },
+    editable:true,
+    eventResize:function(event)
+    {
+     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+     var title = event.title;
+     var id = event.id;
+     $.ajax({
+      url:"update.php",
+      type:"POST",
+      data:{title:title, start:start, end:end, id:id},
+      success:function(){
+       calendar.fullCalendar('refetchEvents');
+       alert('Event Update');
+      }
+     })
+    },
+
+    eventDrop:function(event)
+    {
+     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+     var title = event.title;
+     var id = event.id;
+     $.ajax({
+      url:"update.php",
+      type:"POST",
+      data:{title:title, start:start, end:end, id:id},
+      success:function()
+      {
+       calendar.fullCalendar('refetchEvents');
+       alert("Event Updated");
+      }
+     });
+    },
+
+    eventClick:function(event)
+    {
+     if(confirm("Are you sure you want to remove it?"))
+     {
+      var id = event.id;
+      $.ajax({
+       url:"delete.php",
+       type:"POST",
+       data:{id:id},
+       success:function()
+       {
+        calendar.fullCalendar('refetchEvents');
+        alert("Event Removed");
+       }
+      })
+     }
+    },
+
+   });
+  });	
 //Shows client info when you click on client
 function showUser(str) {
 		document.getElementById("clientButtonDiv").style.display="inherit";
@@ -111,6 +203,7 @@ $(document).ready(function(){
 			$("#newClientButton").click(function(){
 				$("#clientButtonDiv").hide();
 				$("#newClientFormDiv").fadeIn("slow");
+				$("#calendarDiv").hide();
 				$("#txtHint").hide();
 				document.getElementById("editClientButton").disabled = true;
 				var x = document.getElementsByClassName("clientNameDiv");
@@ -123,10 +216,17 @@ $(document).ready(function(){
 	
 	$(".clientNameDiv").click(function(){
 				$("#newClientFormDiv").hide();
+				$("#calendarDiv").hide();
 				$("#txtHint").fadeIn("fast");
 			});
 		
-	
+	$("#calendarButton").click(function(){
+				$("#newClientFormDiv").hide();
+				$("#clientButtonDiv").hide();
+				$("#txtHint").hide();
+				$("#calendarDiv").fadeIn("fast");
+			});
+		
 	$("#menuIconResponsiveDiv").click(function(){
 				$("#navBarMobile").fadeIn("fast");
 				
@@ -134,6 +234,7 @@ $(document).ready(function(){
 	$("#newClientButtonMobile").click(function(){
 				$("#navBarMobile").hide();
 				$("#txtHint").hide();
+				$("#calendarDiv").hide();
 				$("#clientListDiv").hide();
 				$("#clientButtonDiv").hide();
 				$("#newClientFormDiv").fadeIn("fast");
@@ -199,7 +300,8 @@ $(document).ready(function(){
 		</div>
 		<div style="padding: 5px;" id="userLoggedInDiv">
 			<img class="profilePictureOfLoggedInUser" src="<?php echo $profilePicture; ?>">
-			<span id="nameOfUserLoggedIn"><?php echo $firstname." ".$lastname; ?></span>
+			<span id="nameOfUserLoggedIn"><?php echo $firstname." ".$lastname; ?>&emsp;&emsp;<button id="calendarButton" class="clientButtons" style="font-weight: bold;">Calendar</button></span>
+			
 		</div>
 	</nav>
 	
@@ -267,18 +369,17 @@ $(document).ready(function(){
 					</table>
 					<input id="registerNewClientButton" class="loginInputsButton" type="submit" value="Submit">
 				</form>
-				
-				
-				
 			</div>
 			<div id="txtHint">
-				<center><img style="opacity: 0.3; width: 350px;" src="style/images/im_logo.png"></center>
+				
 				
 				<!--<img id="profilePictureOfSelectedClient" src="">
 				<span id="nameOfSelectedClient">George Sofroniou</span><br><br><br><br><br>
 				<p id="infoOfSelectedClient">Email:<span>george.sofroniou15@gmail.com</span></p>-->
 			</div>
-		
+			<center><div id="calendarDiv" style="width: 50%; padding-top: 10px;" >
+   					<div id="calendar"></div>
+  			</div></center>
 	</div>
 	
 	<br><br><br>
