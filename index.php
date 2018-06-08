@@ -219,11 +219,14 @@ $(document).ready(function(){
 			<button id="billsSortButton" class="clientButtons clientButtonsMobile">Bills</button>
 			<button id="insuranceSortButton" class="clientButtons clientButtonsMobile">Types</button>
 			<button id="renewalsSortButton" class="clientButtons clientButtonsMobile">Renewals</button>
-				
-			<button id="newClientButton" class="clientButtons clientButtonsNotResponsive">New Client+</button>
-			<button id="billsSortButton" class="clientButtons clientButtonsNotResponsive">Bills</button><br><br>
+			<table>
+				<td>
+			<tr><button id="newClientButton" class="clientButtons clientButtonsNotResponsive">New Client+</button>
+			<button id="billsSortButton" class="clientButtons clientButtonsNotResponsive">Bills</button><br><br></tr>
+					</td>
 			<button id="insuranceSortButton" class="clientButtons clientButtonsNotResponsive">Types</button>
 			<button id="renewalsSortButton" class="clientButtons clientButtonsNotResponsive">Renewals</button>
+			</table>	
 			</center><br>
 			<center><input id="search_text" style="width: 85%; border-radius: 3px; border: 0.5px solid #858585; padding: 7px;" type="text" placeholder="Search clients"></center>
 			<br>
