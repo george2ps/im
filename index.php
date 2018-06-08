@@ -12,8 +12,12 @@ include('home_page_server.php');
 <link rel="stylesheet" href="style/homePage.css" type="text/css" version="1">
 <link rel="stylesheet" href="style/loginPage.css" type="text/css" version="3">
 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
 <script>
+	
+//Shows client info when you click on client
 function showUser(str) {
+		document.getElementById("clientButtonDiv").style.display="inherit";
 		var x = document.getElementsByClassName("clientNameDiv");
 		var i;
 		for (i = 0; i < x.length; i++) {
@@ -22,10 +26,10 @@ function showUser(str) {
 		document.getElementById(str).style.backgroundColor="aliceblue";
 		document.getElementById("txtHint").style.display="inherit";
 	
-var x = screen.width;
-	if(x<600){
+		var x = screen.width;
+		if(x<600){
 		document.getElementById("clientListDiv").style.display="none";
-	}
+		}
 
   if (str=="") {
     document.getElementById("txtHint").innerHTML="";
@@ -46,12 +50,12 @@ var x = screen.width;
   xmlhttp.send();
 }
 
-	
+//changes edit button to edit the selected client	
 function showEditButton(str) {
   document.getElementById("editClientButton").setAttribute("onClick", "editClient(\'"+str+"\')");
  document.getElementById("editClientButton").disabled = false;
 }
-	
+//delete client button function	
 function deleteClient(str) {
   if (str=="") {
     document.getElementById("txtHint").innerHTML="";
@@ -79,7 +83,7 @@ $(document).ready(function () {
 });
 }
 }
-	
+//gets the info of the selected client to put the values into the text boxes of edit client	
 function editClient(str) {
   if (str=="") {
     document.getElementById("txtHint").innerHTML="";
@@ -103,7 +107,9 @@ function editClient(str) {
 
 	
 $(document).ready(function(){
+	
 			$("#newClientButton").click(function(){
+				$("#clientButtonDiv").hide();
 				$("#newClientFormDiv").fadeIn("slow");
 				$("#txtHint").hide();
 				document.getElementById("editClientButton").disabled = true;
@@ -129,6 +135,7 @@ $(document).ready(function(){
 				$("#navBarMobile").hide();
 				$("#txtHint").hide();
 				$("#clientListDiv").hide();
+				$("#clientButtonDiv").hide();
 				$("#newClientFormDiv").fadeIn("fast");
 				
 				
@@ -138,6 +145,7 @@ $(document).ready(function(){
 				$("#navBarMobile").hide();
 				$("#txtHint").hide();
 				$("#newClientFormDiv").hide("fast");
+				$("#clientButtonDiv").hide();
 				$("#clientListDiv").fadeIn("fast");
 				
 			});
@@ -182,36 +190,43 @@ $(document).ready(function(){
 
 
 <body>
-	
-		<nav id="navBarDiv">
-			<div id="logoutDiv">
+	<nav id="navBarDiv">
+		<div id="logoutDiv">
 			<a href="logout.php"><img style="width: 28px; height: 30px; padding: 10px;" src="style/images/logout.png"></a>
-			</div>
-			<div id="menuIconResponsiveDiv">
-				<img id="menuIconResponsive" class="profilePictureOfLoggedInUser" src="style/images/menu-icon.png">
-			</div>
-			<div style="padding: 5px;" id="userLoggedInDiv">
-				<img class="profilePictureOfLoggedInUser" src="<?php echo $profilePicture; ?>">
-				
-				<span id="nameOfUserLoggedIn"><?php echo $firstname." ".$lastname; ?></span>
-			</div>
-		</nav>
-	
-		<div id="navBarMobile">
-			<br>
-				<center><img style="width: 100px;" src="<?php echo $profilePicture; ?>"></center>
-			<span id="nameOfUserLoggedIn" style="padding-left: 50px;"><?php echo $firstname." ".$lastname; ?></span><br><br>
-			<ul style="color: white; margin: 0; padding: 0;">
-				<li id="newClientButtonMobile" style="border-top: 1px solid #282828; border-bottom: 1px solid #282828; background-color: black;list-style-type: none;  padding: 10px; margin: 0;">New Client+</li>
-				<li id="clientListButton" style="border-top: 1px solid #282828; border-bottom: 1px solid #282828; background-color: black;list-style-type: none;  padding: 10px; margin: 0;">Clients</li>
-			</ul>
 		</div>
+		<div id="menuIconResponsiveDiv">
+			<img id="menuIconResponsive" class="profilePictureOfLoggedInUser" src="style/images/menu-icon.png">
+		</div>
+		<div style="padding: 5px;" id="userLoggedInDiv">
+			<img class="profilePictureOfLoggedInUser" src="<?php echo $profilePicture; ?>">
+			<span id="nameOfUserLoggedIn"><?php echo $firstname." ".$lastname; ?></span>
+		</div>
+	</nav>
 	
+	<div id="navBarMobile">
+		<br>
+		<center><img style="width: 100px;" src="<?php echo $profilePicture; ?>"></center>
+		<span id="nameOfUserLoggedIn" style="padding-left: 50px;"><?php echo $firstname." ".$lastname; ?></span><br><br>
+		<ul style="color: white; margin: 0; padding: 0;">
+			<li id="clientListButton" style="border-top: 1px solid #282828; border-bottom: 1px solid #282828; background-color: black;list-style-type: none;  padding: 10px; margin: 0;">Clients</li>
+		</ul>
+	</div>
 	<br><br><br>
 	<div id="mainContainer">
-			<div id="clientListDiv">
-				<center><input id="search_text" style="width: 85%; border-radius: 3px; border: 0.5px solid #858585; padding: 7px;" type="text" placeholder="Search clients"></center>
-				<br>
+		<div id="clientListDiv">
+			<center>
+			<button id="newClientButtonMobile" class="clientButtons clientButtonsMobile">New Client</button>
+			<button id="billsSortButton" class="clientButtons clientButtonsMobile">Bills</button>
+			<button id="insuranceSortButton" class="clientButtons clientButtonsMobile">Types</button>
+			<button id="renewalsSortButton" class="clientButtons clientButtonsMobile">Renewals</button>
+				
+			<button id="newClientButton" class="clientButtons clientButtonsNotResponsive">New Client+</button>
+			<button id="billsSortButton" class="clientButtons clientButtonsNotResponsive">Bills</button><br><br>
+			<button id="insuranceSortButton" class="clientButtons clientButtonsNotResponsive">Types</button>
+			<button id="renewalsSortButton" class="clientButtons clientButtonsNotResponsive">Renewals</button>
+			</center><br>
+			<center><input id="search_text" style="width: 85%; border-radius: 3px; border: 0.5px solid #858585; padding: 7px;" type="text" placeholder="Search clients"></center>
+			<br>
 			
 			<?php 
 				for($i=$arrayLength-1; $i>=0; $i--){
@@ -223,13 +238,15 @@ $(document).ready(function(){
 <img  src="user_profile_pictures/default.png">
 <span style=" padding: 15px; float: right; margin-right: 40px;">Antonis Papayiannis</span>
 </div>-->
-			</div>
-			<div id="clientButtonDiv">
-				<button id="newClientButton" class="clientButtons">New Client+</button>
-				<button id="editClientButton" class="clientButtons" onClick="editClient()" disabled>Edit Client</button>
-				<button class="clientButtons">Appointment</button>
+		</div>
+		<div id="clientButtonDiv">
+			<button class="clientButtons">New Insurance</button>
+			<button class="clientButtons">Payments</button>
+			<button class="clientButtons">Balance</button>
+			<button id="editClientButton" class="clientButtons" onClick="editClient()">Edit Client</button>
+
 				
-			</div>
+		</div>
 			<div id="newClientFormDiv">
 				<h1>New Client</h1>
 				<form action="client_registration_server.php" method="post">
