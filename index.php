@@ -98,7 +98,11 @@ $(document).ready(function() {
 
     eventClick:function(event)
     {
-     if(confirm("Are you sure you want to remove it?"))
+		vex.dialog.confirm({
+    message: 'Are you sure you want to delete this event?',
+    callback: function (value) {
+        var x = value;
+		if(x)
      {
       var id = event.id;
       $.ajax({
@@ -112,6 +116,9 @@ $(document).ready(function() {
        }
       })
      }
+    }
+})
+     
     },
 
    });
