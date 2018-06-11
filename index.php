@@ -12,17 +12,21 @@ include('home_page_server.php');
 <link rel="stylesheet" href="style/homePage.css" type="text/css" version="1">
 <link rel="stylesheet" href="style/loginPage.css" type="text/css" version="3">
  <link rel="stylesheet" href="style/fullcalendar.css" type="text/css" version="3">
- 
-
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vex-js/4.1.0/css/vex.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vex-js/4.1.0/css/vex-theme-os.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vex-js/4.1.0/js/vex.combined.min.js"></script>
+	<script>vex.defaultOptions.className = 'vex-theme-os'</script>
 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+	
 <script>
 
 $(document).ready(function() {
-   var calendar = $('#calendar').fullCalendar({
+	var title
+   	var calendar = $('#calendar').fullCalendar({
     editable:true,
     header:{
      left:'prev,next today',
@@ -34,22 +38,28 @@ $(document).ready(function() {
     selectHelper:true,
     select: function(start, end, allDay)
     {
-     var title = prompt("Enter Event Title");
-     if(title)
-     {
-      var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
-      var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
-      $.ajax({
-       url:"insert.php",
-       type:"POST",
-       data:{title:title, start:start, end:end},
-       success:function()
-       {
-        calendar.fullCalendar('refetchEvents');
-        alert("Added Successfully");
-       }
-      })
-     }
+	  var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+      var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");	
+	vex.dialog.prompt({
+    message: 'Enter event name',
+    placeholder: 'Event name',
+    callback: function (value) {
+        title = value;
+		if(title){
+		 	$.ajax({
+       		url:"insert.php",
+       		type:"POST",
+       		data:{title:title, start:start, end:end},
+       		success:function()
+       			{
+        		calendar.fullCalendar('refetchEvents');
+       	
+       			}
+      		})
+		}
+    }
+})
+     
     },
     editable:true,
     eventResize:function(event)
@@ -64,7 +74,7 @@ $(document).ready(function() {
       data:{title:title, start:start, end:end, id:id},
       success:function(){
        calendar.fullCalendar('refetchEvents');
-       alert('Event Update');
+       
       }
      })
     },
@@ -82,7 +92,6 @@ $(document).ready(function() {
       success:function()
       {
        calendar.fullCalendar('refetchEvents');
-       alert("Event Updated");
       }
      });
     },
@@ -99,7 +108,7 @@ $(document).ready(function() {
        success:function()
        {
         calendar.fullCalendar('refetchEvents');
-        alert("Event Removed");
+        
        }
       })
      }
@@ -291,6 +300,7 @@ $(document).ready(function(){
 
 
 <body>
+	
 	<nav id="navBarDiv">
 		<div id="logoutDiv">
 			<a href="logout.php"><img style="width: 28px; height: 30px; padding: 10px;" src="style/images/logout.png"></a>
