@@ -125,9 +125,11 @@ body{
 }
 
 #calendarDiv{
-	width: 50%; 
+	width: 600px; 
 	padding-top: 10px;
 	display: inherit;
+	position: fixed;
+	margin-left: 320px;
 }
 
 /*Responsive Design*/
@@ -183,6 +185,7 @@ body{
 	#calendarDiv{
 	padding-top: 50px;
 	width: 95%;
+	margin-left: 2%;
 }
 	
 }

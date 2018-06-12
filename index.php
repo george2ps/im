@@ -9,7 +9,7 @@ include('home_page_server.php');
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insurance Manager</title>
-<link rel="stylesheet" href="style/homePage.css" type="text/css" version="1">
+<link rel="stylesheet" href="style/homePage.css" type="text/css" version="3">
 <link rel="stylesheet" href="style/loginPage.css" type="text/css" version="3">
 <link rel="stylesheet" href="style/fullcalendar.css" type="text/css" version="3">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vex-js/4.1.0/css/vex.css" />
