@@ -49,7 +49,8 @@ body{
 	position: fixed; 
 	background-color:#D7D7D7; 
 	padding-top: 20px; 
-	z-index: 1
+	z-index: 1;
+	display: inherit;
 }
 .clientNameDiv{
 	cursor: pointer;
@@ -119,25 +120,38 @@ body{
 	height: 100%; 
 	position: fixed; 
 	background-color:#2E2E2E;
-	z-index: 3; 
+	z-index: 51; 
 	display: none;
+}
+
+#calendarDiv{
+	width: 50%; 
+	padding-top: 10px;
+	display: inherit;
 }
 
 /*Responsive Design*/
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-device-width: 600px) {
     /* For mobile phones: */
+	
     #menuIconResponsive{
        display:inherit;
+		width: 30px;
+		height: 25px;
+		padding: 15px;
     }
+	
 	#userLoggedInDiv{
 		display: none;
 	}
 	
 	#clientListDiv{
+		z-index: 50;
 		width: 100%;
 		display: inherit;
 	}
+	
 	#txtHint{
 	display: none;
 	margin-left: 0px;
@@ -167,8 +181,10 @@ body{
 	display: none;
 }
 	#calendarDiv{
-	display: none;
+	padding-top: 50px;
+	width: 95%;
 }
+	
 }
 
 

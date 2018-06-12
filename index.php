@@ -261,10 +261,22 @@ $(document).ready(function(){
 	$("#clientListButton").click(function(){
 				$("#navBarMobile").hide();
 				$("#txtHint").hide();
-				$("#newClientFormDiv").hide("fast");
+				$("#newClientFormDiv").hide();
 				$("#clientButtonDiv").hide();
+				$("#calendarDiv").hide();
+				$("#calendar").hide();
 				$("#clientListDiv").fadeIn("fast");
 				
+			});
+	
+	$("#calendarListButton").click(function(){
+				$("#navBarMobile").hide();
+				$("#newClientFormDiv").hide("fast");
+				$("#clientButtonDiv").hide();
+				$("#clientListDiv").hide();
+				$("#txtHint").hide();
+				$("#calendarDiv").fadeIn("fast");
+				$("#calendar").fadeIn("fast");
 			});
 		
 	});
@@ -310,7 +322,7 @@ $(document).ready(function(){
 	
 	<nav id="navBarDiv">
 		<div id="logoutDiv">
-			<a href="logout.php"><img style="width: 28px; height: 30px; padding: 10px;" src="style/images/logout.png"></a>
+			<a href="logout.php"><img style="width: 23px; height: 25px; padding: 15px;" src="style/images/logout.png"></a>
 		</div>
 		<div id="menuIconResponsiveDiv">
 			<img id="menuIconResponsive" class="profilePictureOfLoggedInUser" src="style/images/menu-icon.png">
@@ -328,6 +340,7 @@ $(document).ready(function(){
 		<span id="nameOfUserLoggedIn" style="padding-left: 50px;"><?php echo $firstname." ".$lastname; ?></span><br><br>
 		<ul style="color: white; margin: 0; padding: 0;">
 			<li id="clientListButton" style="border-top: 1px solid #282828; border-bottom: 1px solid #282828; background-color: black;list-style-type: none;  padding: 10px; margin: 0;">Clients</li>
+			<li id="calendarListButton" style="border-top: 1px solid #282828; border-bottom: 1px solid #282828; background-color: black;list-style-type: none;  padding: 10px; margin: 0;">Calendar</li>
 		</ul>
 	</div>
 	<br><br><br>
@@ -394,7 +407,7 @@ $(document).ready(function(){
 				<span id="nameOfSelectedClient">George Sofroniou</span><br><br><br><br><br>
 				<p id="infoOfSelectedClient">Email:<span>george.sofroniou15@gmail.com</span></p>-->
 			</div>
-			<center><div id="calendarDiv" style="width: 50%; padding-top: 10px;" >
+			<center><div id="calendarDiv">
    					<div id="calendar"></div>
   			</div></center>
 	</div>
