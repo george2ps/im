@@ -219,7 +219,7 @@ $(document).ready(function(){
 			$("#newClientButton").click(function(){
 				$("#clientButtonDiv").hide();
 				$("#newClientFormDiv").fadeIn("slow");
-				$("#calendarDiv").hide();
+				$("#calendarEventDiv").hide();
 				$("#txtHint").hide();
 				document.getElementById("editClientButton").disabled = true;
 				var x = document.getElementsByClassName("clientNameDiv");
@@ -232,7 +232,7 @@ $(document).ready(function(){
 	
 	$(".clientNameDiv").click(function(){
 				$("#newClientFormDiv").hide();
-				$("#calendarDiv").hide();
+				$("#calendarEventDiv").hide();
 				$("#txtHint").fadeIn("fast");
 			});
 		
@@ -240,7 +240,13 @@ $(document).ready(function(){
 				$("#newClientFormDiv").hide();
 				$("#clientButtonDiv").hide();
 				$("#txtHint").hide();
-				$("#calendarDiv").fadeIn("fast");
+				$("#calendarEventDiv").fadeIn("fast");
+				var x = document.getElementsByClassName("clientNameDiv");
+				var i;
+				for (i = 0; i < x.length; i++) {
+    			x[i].style.backgroundColor = "transparent";
+				}
+		
 			});
 		
 	$("#menuIconResponsiveDiv").click(function(){
@@ -250,7 +256,7 @@ $(document).ready(function(){
 	$("#newClientButtonMobile").click(function(){
 				$("#navBarMobile").hide();
 				$("#txtHint").hide();
-				$("#calendarDiv").hide();
+				$("#calendarEventDiv").hide();
 				$("#clientListDiv").hide();
 				$("#clientButtonDiv").hide();
 				$("#newClientFormDiv").fadeIn("fast");
@@ -263,8 +269,7 @@ $(document).ready(function(){
 				$("#txtHint").hide();
 				$("#newClientFormDiv").hide();
 				$("#clientButtonDiv").hide();
-				$("#calendarDiv").hide();
-				$("#calendar").hide();
+				$("#calendarEventDiv").hide();
 				$("#clientListDiv").fadeIn("fast");
 				
 			});
@@ -275,8 +280,8 @@ $(document).ready(function(){
 				$("#clientButtonDiv").hide();
 				$("#clientListDiv").hide();
 				$("#txtHint").hide();
-				$("#calendarDiv").fadeIn("fast");
-				$("#calendar").fadeIn("fast");
+				$("#calendarEventDiv").fadeIn("fast");
+				
 			});
 		
 	});
@@ -347,17 +352,25 @@ $(document).ready(function(){
 	<div id="mainContainer">
 		<div id="clientListDiv">
 			<center>
-			<button id="newClientButtonMobile" class="clientButtons clientButtonsMobile">New Client</button>
-			<button id="billsSortButton" class="clientButtons clientButtonsMobile">Bills</button>
-			<button id="insuranceSortButton" class="clientButtons clientButtonsMobile">Types</button>
-			<button id="renewalsSortButton" class="clientButtons clientButtonsMobile">Renewals</button>
+				<button id="newClientButtonMobile" class="clientButtons clientButtonsMobile">New Client</button>
+				<button id="billsSortButton" class="clientButtons clientButtonsMobile">Bills</button>
+				<button id="insuranceSortButton" class="clientButtons clientButtonsMobile">Types</button>
+				<button id="renewalsSortButton" class="clientButtons clientButtonsMobile">Renewals</button>
 			<table>
 				<td>
-			<tr><button id="newClientButton" class="clientButtons clientButtonsNotResponsive">New Client+</button>
-			<button id="billsSortButton" class="clientButtons clientButtonsNotResponsive">Bills</button><br><br></tr>
-					</td>
+					<tr>
+						<button id="newClientButton" class="clientButtons clientButtonsNotResponsive">New Client+</button>
+				&emsp;
+						<button id="billsSortButton" class="clientButtons clientButtonsNotResponsive">Bills</button><br><br>
+					</tr>
+				</td>
+				<td>
+					<tr>
 			<button id="insuranceSortButton" class="clientButtons clientButtonsNotResponsive">Types</button>
+				&emsp;
 			<button id="renewalsSortButton" class="clientButtons clientButtonsNotResponsive">Renewals</button>
+						</tr>
+				</td>
 			</table>	
 			</center><br>
 			<center><input id="search_text" style="width: 85%; border-radius: 3px; border: 0.5px solid #858585; padding: 7px;" type="text" placeholder="Search clients"></center>
@@ -407,9 +420,15 @@ $(document).ready(function(){
 				<span id="nameOfSelectedClient">George Sofroniou</span><br><br><br><br><br>
 				<p id="infoOfSelectedClient">Email:<span>george.sofroniou15@gmail.com</span></p>-->
 			</div>
-			<center><div id="calendarDiv">
-   					<div id="calendar"></div>
-  			</div></center>
+			<center>
+				<div id="calendarEventDiv" style=" padding-top: 15px;">
+					<div id="calendarDiv">
+						<div id="calendar"></div>
+					</div>
+					<div id="eventListDiv">
+						<h3>Next Apointment</h3>
+					</div>
+				</div></center>
 	</div>
 	
 	<br><br><br>

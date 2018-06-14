@@ -65,6 +65,7 @@ body{
 	margin-left: 300px; 
 	padding: 20px; 
 	padding-top: 0px;
+	display: none;
 }
 
 #clientButtonDiv{
@@ -92,8 +93,17 @@ body{
 .clientButtons{
 	width: 100px;
 	height: 30px;
-	border-radius: 5px;
 	cursor: pointer;
+	border-radius: 5px;
+	border:0;
+	box-shadow: 0px 0px 1px 0px #015F92;
+	background-color:#015F92;
+	color: white;
+	font-weight: bold;
+}
+
+.clientButtons:hover{
+	background-color:#0189D3;
 }
 
 .clientButtonsMobile{
@@ -125,11 +135,27 @@ body{
 }
 
 #calendarDiv{
-	width: 600px; 
+	width: 620px; 
 	padding-top: 10px;
 	display: inherit;
 	position: fixed;
 	margin-left: 320px;
+	border: 0.5px solid thin #D5D5D5;
+	border-radius: 5px;
+	padding: 20px;
+	box-shadow: 0px 0px 3px 0px #4A4A4A;
+	background-color:#FFFFFF;
+}
+
+#eventListDiv{
+	float: right;
+	margin-right: 20px;
+	width: 250px; 
+	height: 548px;
+	border: 0.5px solid thin #D5D5D5;
+	border-radius: 5px;
+	box-shadow: 0px 0px 3px 0px #4A4A4A;
+	background-color:#FFFFFF;
 }
 
 /*Responsive Design*/
