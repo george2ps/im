@@ -169,7 +169,11 @@ function deleteClient(str) {
     document.getElementById("txtHint").innerHTML="";
     return;
   }
-if(confirm("Are you sure you want to delete the client?")){
+	vex.dialog.confirm({
+    message: 'Are you sure you want to delete the client?',
+    callback: function (value) {
+        var booleanConfirm = value;
+		if(booleanConfirm){
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp=new XMLHttpRequest();
@@ -183,14 +187,17 @@ if(confirm("Are you sure you want to delete the client?")){
   }
   xmlhttp.open("GET","delete_user.php?e="+str,true);
   xmlhttp.send();
-$(document).ready(function () {
+			$(document).ready(function () {
     // Handler for .ready() called.
     window.setTimeout(function () {
         location.href = "index.php";
     }, 2000);
 });
+		}
+	}})
+
 }
-}
+
 //gets the info of the selected client to put the values into the text boxes of edit client	
 function editClient(str) {
   if (str=="") {
@@ -334,8 +341,10 @@ $(document).ready(function(){
 		</div>
 		<div style="padding: 5px;" id="userLoggedInDiv">
 			<img class="profilePictureOfLoggedInUser" src="<?php echo $profilePicture; ?>">
-			<span id="nameOfUserLoggedIn"><?php echo $firstname." ".$lastname; ?>&emsp;&emsp;<button id="calendarButton" class="clientButtons" style="font-weight: bold;">Calendar</button></span>
-			
+			<span id="nameOfUserLoggedIn"><?php echo $firstname." ".$lastname; ?>&emsp;&emsp;&emsp;</span>
+			<div style="padding: 5px;">
+				<button id="calendarButton"  style="font-weight: bold; width: 50px; background-color: transparent; border: 0; cursor: pointer;"><img src="style/images/calendarButton.png" style="width: 30px;"></button>
+			</div>
 		</div>
 	</nav>
 	

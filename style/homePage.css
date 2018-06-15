@@ -36,8 +36,9 @@ body{
 
 #nameOfUserLoggedIn{
 	color: white; 
-	padding: 10px; 
+	padding: 13px; 
 	float: left; 
+	padding-right: 0px;
 	
 }
 
@@ -59,6 +60,10 @@ body{
 .clientNameDiv:hover{
 	
 	background-color:aliceblue;
+}
+
+.clientProfilePictureDiv{
+	width: 50px;
 }
 
 #txtHint{
