@@ -53,7 +53,7 @@ $(document).ready(function() {
        		success:function()
        			{
         		calendar.fullCalendar('refetchEvents');
-       	
+       	loadEvents();
        			}
       		})
 		}
@@ -74,7 +74,7 @@ $(document).ready(function() {
       data:{title:title, start:start, end:end, id:id},
       success:function(){
        calendar.fullCalendar('refetchEvents');
-       
+       loadEvents();
       }
      })
     },
@@ -92,6 +92,7 @@ $(document).ready(function() {
       success:function()
       {
        calendar.fullCalendar('refetchEvents');
+		loadEvents();
       }
      });
     },
@@ -112,7 +113,7 @@ $(document).ready(function() {
        success:function()
        {
         calendar.fullCalendar('refetchEvents');
-        
+        loadEvents();
        }
       })
      }
@@ -219,10 +220,26 @@ function editClient(str) {
   xmlhttp.send();
 }
 	
-
+function loadEvents() {
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("nextEventList").innerHTML=this.responseText;
+    }
+  }
+  xmlhttp.open("GET","load_calendar_events.php",true);
+  xmlhttp.send();
+}
+	
+	
 	
 $(document).ready(function(){
-	
+			loadEvents();
 			$("#newClientButton").click(function(){
 				$("#clientButtonDiv").hide();
 				$("#newClientFormDiv").fadeIn("slow");
@@ -436,6 +453,7 @@ $(document).ready(function(){
 					</div>
 					<div id="eventListDiv">
 						<h3>Next Apointment</h3>
+						<div id="nextEventList"></div>
 					</div>
 				</div></center>
 	</div>
