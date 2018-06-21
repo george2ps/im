@@ -9,8 +9,8 @@
 	$conn = new mysqli($servername, $usernameDb, $password, $db);
 	
 	$username = $_SESSION['login_user'];
-
-	$query = mysqli_query($conn, "SELECT * FROM events WHERE insurer_email = '$username'");
+	$currentDate = date('Y-m-d H:i:s');
+	$query = mysqli_query($conn, "SELECT * FROM events WHERE insurer_email = '$username' AND start_event >= '$currentDate'");
 	
 	$eventsArrayTitle = array();
 	$eventsArrayStart = array();
@@ -21,12 +21,13 @@
 		
 	}
 	$arrayLength = count($eventsArrayTitle);
+	sort($eventsArrayStart);
 	for($i=0; $i<$arrayLength; $i++){
 				echo($eventsArrayTitle[$i]);
 				$d = $eventsArrayStart[$i];
 				$date = date_create($d);
 				echo "<br>";
-				echo date_format($date,"d M H:i:s");
+				echo date_format($date,"d M H:i:sa");
 				echo "<br><br>";
 				}
 
