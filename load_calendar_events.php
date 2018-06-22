@@ -27,7 +27,7 @@
 				$d = $eventsArrayStart[$i];
 				$date = date_create($d);
 				echo "<br>";
-				echo date_format($date,"d M H:i:sa");
+				echo date_format($date,"d M H:i a");
 				echo "<br><br>";
 				}
 
