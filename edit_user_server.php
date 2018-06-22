@@ -16,11 +16,11 @@ session_start();
 	$lastname=$_POST['clientLastname'];
 	$currentClientEmail = $_SESSION['clientCurrentEmail'];
 	$htmlElement = '<div id="'.$email.'" class="clientNameDiv" onClick="showUser('.$email1.'), showEditButton('.$email1.')" style="padding: 5px; border-top: 1px solid black;">
-	<img src="user_profile_pictures/default.png">
+	<img class="clientProfilePictureDiv" src="user_profile_pictures/default.png">
 	<span style="float:right; padding:15px; position:absolute;  margin-right: 40px;">'.$firstname.' '. $lastname.'</span>
 	</div>';
 
 	$query5 = mysqli_query($conn, "UPDATE client_info SET firstname='$firstname', lastname='$lastname', email='$email', html_element='$htmlElement' WHERE insurer_email='$username' AND email='$currentClientEmail'");
 
-	header("location: editClientSuccess.html");
+	header("location: index.php");
 ?>

@@ -21,6 +21,7 @@ include('home_page_server.php');
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+<script src="http://malsup.github.com/jquery.form.js"></script> 
 	
 <script>
 
@@ -189,6 +190,7 @@ function deleteClient(str) {
   xmlhttp.open("GET","delete_user.php?e="+str,true);
   xmlhttp.send();
 			$(document).ready(function () {
+				$('#loader').show();
     // Handler for .ready() called.
     window.setTimeout(function () {
         location.href = "index.php";
@@ -239,6 +241,20 @@ function loadEvents() {
 	
 	
 $(document).ready(function(){
+            // bind 'myForm' and provide a simple callback function 
+            $('#newClientForm').ajaxForm(function() { 
+               $('#loader').show();
+				window.setTimeout(function () {
+        		location.href = "index.php";
+    			}, 2000);
+            }); 
+         
+	 		$('#editUserForm').ajaxForm(function() { 
+                 window.setTimeout(function () {
+        		location.href = "index.php";
+    			}, 2000);
+            }); 
+	
 			loadEvents();
 			$("#newClientButton").click(function(){
 				$("#clientButtonDiv").hide();
@@ -348,7 +364,7 @@ $(document).ready(function(){
 
 
 <body>
-	
+	<center><div id="loader" style="z-index: 10; position: fixed; margin-top: 300px; margin-left: 45%;"></div></center>
 	<nav id="navBarDiv">
 		<div id="logoutDiv">
 			<a href="logout.php"><img style="width: 23px; height: 25px; padding: 15px;" src="style/images/logout.png"></a>
@@ -423,7 +439,7 @@ $(document).ready(function(){
 		</div>
 			<div id="newClientFormDiv">
 				<h1>New Client</h1>
-				<form action="client_registration_server.php" method="post">
+				<form id="newClientForm" action="client_registration_server.php" method="post">
 					<table>
 						<td>
 							<tr>

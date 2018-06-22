@@ -19,7 +19,7 @@ $query = mysqli_query($conn, "SELECT * FROM client_info WHERE email='$e' AND ins
 	$clientLastname = $row['lastname'];
 
 echo '<h1>Edit Client</h1>
-				<form action="edit_user_server.php" method="post">
+				<form id="editUserForm" action="edit_user_server.php" method="post">
 					<table>
 						<td>
 							<tr>
