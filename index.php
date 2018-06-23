@@ -258,7 +258,7 @@ $(document).ready(function(){
 			loadEvents();
 			$("#newClientButton").click(function(){
 				$("#clientButtonDiv").hide();
-				$("#newClientFormDiv").fadeIn("slow");
+				$("#newClientFormContainer").fadeIn("slow");
 				$("#calendarEventDiv").hide();
 				$("#txtHint").hide();
 				document.getElementById("editClientButton").disabled = true;
@@ -271,13 +271,13 @@ $(document).ready(function(){
 		
 	
 	$(".clientNameDiv").click(function(){
-				$("#newClientFormDiv").hide();
+				$("#newClientFormContainer").hide();
 				$("#calendarEventDiv").hide();
 				$("#txtHint").fadeIn("fast");
 			});
 		
 	$("#calendarButton").click(function(){
-				$("#newClientFormDiv").hide();
+				$("#newClientFormContainer").hide();
 				$("#clientButtonDiv").hide();
 				$("#txtHint").hide();
 				$("#calendarEventDiv").fadeIn("fast");
@@ -299,7 +299,7 @@ $(document).ready(function(){
 				$("#calendarEventDiv").hide();
 				$("#clientListDiv").hide();
 				$("#clientButtonDiv").hide();
-				$("#newClientFormDiv").fadeIn("fast");
+				$("#newClientFormContainer").fadeIn("fast");
 				
 				
 			});
@@ -307,7 +307,7 @@ $(document).ready(function(){
 	$("#clientListButton").click(function(){
 				$("#navBarMobile").hide();
 				$("#txtHint").hide();
-				$("#newClientFormDiv").hide();
+				$("#newClientFormContainer").hide();
 				$("#clientButtonDiv").hide();
 				$("#calendarEventDiv").hide();
 				$("#clientListDiv").fadeIn("fast");
@@ -316,7 +316,7 @@ $(document).ready(function(){
 	
 	$("#calendarListButton").click(function(){
 				$("#navBarMobile").hide();
-				$("#newClientFormDiv").hide("fast");
+				$("#newClientFormContainer").hide("fast");
 				$("#clientButtonDiv").hide();
 				$("#clientListDiv").hide();
 				$("#txtHint").hide();
@@ -437,6 +437,7 @@ $(document).ready(function(){
 
 				
 		</div>
+		<div id="newClientFormContainer">
 			<div id="newClientFormDiv">
 				<h1>New Client</h1>
 				<form id="newClientForm" action="client_registration_server.php" method="post">
@@ -454,7 +455,7 @@ $(document).ready(function(){
 					</table>
 					<input id="registerNewClientButton" class="loginInputsButton" type="submit" value="Submit">
 				</form>
-			</div>
+			</div></div>
 			<div id="txtHint">
 				
 				
