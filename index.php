@@ -323,7 +323,10 @@ $(document).ready(function(){
 				$("#calendarEventDiv").fadeIn("fast");
 				
 			});
-		
+		$("#formResetButton").click(function(){
+			document.getElementById("newClientForm").reset();
+			document.getElementById("clientEmailInput").style="background-color: 0;";
+		});
 	});
 $(document).ready(function(){
    $(".clientEmail").keyup(function(){
@@ -341,11 +344,11 @@ $(document).ready(function(){
             success: function(response){
 
                 if(response > 0){
-                    $(".uname_response").html("<span style='color:red; font-weight:bold;'>*Email Already in use.</span>");
+                   document.getElementById("emailCheckMessage").style="display:inherit;"
 					document.getElementById("registerNewClientButton").disabled = true;	 			document.getElementById("registerNewClientButton").style="opacity:0.5;";
 					
                 }else{
-                    $(".uname_response").html("<span style='color:green; font-weight:bold;'>Available</span>");
+					document.getElementById("emailCheckMessage").style="display:none;"
 					document.getElementById("registerNewClientButton").disabled = false;	 			document.getElementById("registerNewClientButton").style="opacity:1;";
                 }
 
@@ -442,18 +445,31 @@ $(document).ready(function(){
 				<h1>New Client</h1>
 				<form id="newClientForm" action="client_registration_server.php" method="post">
 					<table>
+						<tbody>
 						<td>
 							<tr>
 								<input class="newClientInputs" type="text" placeholder="Firstname" name="clientFirstname" required><span> </span>
 								<input class="newClientInputs" type="text" placeholder="Lastname" name="clientLastname" required><span> </span>
-								<input class="newClientInputs clientEmail" type="email" placeholder="Email address" name="clientEmail" required><span class="uname_response"></span></input>
+								<input id="clientEmailInput" class="newClientInputs clientEmail" type="email" placeholder="Email address" name="clientEmail" required><span class="uname_response"></span></input>
 								<span> </span>
 								<input class="newClientInputs" type="tel" placeholder="Phone Number" name="clientPhone" required>
+							</tr><br><br>
+							<tr>
+								<input class="newClientInputs" type="text" placeholder="Address" name="clientAddress" required><span> </span>
+								<input class="newClientInputs" type="text" placeholder="Address 2" name="clientAddressTwo" ><span> </span>
+								<input class="newClientInputs" type="text" placeholder="City" name="clientCity" required>
+								<span> </span>
+								<input class="newClientInputs" type="text" placeholder="Post Code" name="clientPostCode" required>
+							</tr><br><br>
+							<tr>
+								<input class="newClientInputs" type="text" placeholder="Date of Birth" name="clientDOB" required>
 							</tr>
 						</td>
-						
+						</tbody>
 					</table>
 					<input id="registerNewClientButton" class="loginInputsButton" type="submit" value="Submit">
+					<button id="formResetButton" style="float: right; width: 100px; background-color: #DAB60F; border: 0;" class="loginInputsButton">Clear</button><br><br>
+					<span id="emailCheckMessage">*Email already exists</span>
 				</form>
 			</div></div>
 			<div id="txtHint">
