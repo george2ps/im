@@ -13,10 +13,13 @@
 
 	<script>
 		$(document).ready(function(){
-			$("button").click(function(){
+			$("#signUpButton").click(function(){
 				$("#signUpFormDiv").fadeIn("fast");
 				$("#signInFormDiv").hide();
-				$("#signUpButton").hide();
+			});
+			$("#signInButton").click(function(){
+				$("#signUpFormDiv").hide();
+				$("#signInFormDiv").fadeIn("fast");
 			});
 		});
 		
@@ -47,7 +50,8 @@
 			<input class="loginInputs" name="password" type="password" placeholder="Password" required><br>
 			<input class="loginInputs" name="passwordConf" type="password" placeholder="Confirm Password" required><br>
 			<input class="loginInputs" name="phone" type="tel" placeholder="Phone Number"><br>
-			<input class="loginInputsButton" type="submit" value="Sign Up">
+			<input class="loginInputsButton" type="submit" value="Sign Up"><br><br>
+			<button style="background-color: transparent;border: 0; cursor: pointer; text-decoration: underline; color: blue;" id="signInButton" type="button">Sign in</button>
 		</form>
 	</div>
 	</div>
