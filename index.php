@@ -398,13 +398,16 @@ $(document).ready(function(){
 		<div id="clientListDiv">
 			<center>
 				<button id="newClientButtonMobile" class="clientButtons clientButtonsMobile">New Client</button>
+<!--
 				<button id="billsSortButton" class="clientButtons clientButtonsMobile">Bills</button>
 				<button id="insuranceSortButton" class="clientButtons clientButtonsMobile">Types</button>
 				<button id="renewalsSortButton" class="clientButtons clientButtonsMobile">Renewals</button>
+-->
 			<table>
 				<td>
 					<tr>
 						<button id="newClientButton" class="clientButtons clientButtonsNotResponsive">New Client+</button>
+<!--
 				&emsp;
 						<button id="billsSortButton" class="clientButtons clientButtonsNotResponsive">Bills</button><br><br>
 					</tr>
@@ -414,6 +417,7 @@ $(document).ready(function(){
 			<button id="insuranceSortButton" class="clientButtons clientButtonsNotResponsive">Types</button>
 				&emsp;
 			<button id="renewalsSortButton" class="clientButtons clientButtonsNotResponsive">Renewals</button>
+-->
 						</tr>
 				</td>
 			</table>	
