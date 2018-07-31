@@ -266,4 +266,16 @@ body{
 	
 }
 
+@media screen and (min-width: 1300px) {
+	#calendarDiv{
+		width: 62%;
+	}
+	#eventListDiv{
+		width: 17%;
+		
+	}
+	
+	
+}
+
 
