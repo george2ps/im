@@ -18,6 +18,36 @@
 
 
 	echo "<img id='profilePictureOfSelectedClient' src='".$result4."'>
-				<span id='nameOfSelectedClient'>".$result2.' '. $result3."</span><br><br><br><br><br>
-				<p id='infoOfSelectedClient'>Email: <span>".$result."</span></p>";
+				<span id='nameOfSelectedClient'>".$result2.' '. $result3."</span><br><br><br><br><br><br>
+		<div style='overflow-x:auto;'>
+  <table id='client_insurance_details_table'>
+    <tr>
+      <th>Insurance Type</th>
+      <th>Insurance Details</th>
+      <th>Date Created</th>
+      <th>Expiry Date</th>
+      <th>Price</th>
+      <th>Poso Xoflisis</th>
+      <th>Poso Apomeni</th>
+    </tr>
+    <tr>
+      <td>CAR</td>
+      <td>KKK123</td>
+      <td>12/03/18</td>
+      <td>12/03/19</td>
+      <td>€120</td>
+      <td>€70</td>
+      <td>€50</td>
+    </tr>
+    <tr>
+      <td>HOUSE</td>
+      <td>Florinis 12</td>
+      <td>06/12/18</td>
+      <td>06/12/19</td>
+      <td>€200</td>
+      <td>€120</td>
+      <td>€80</td>
+    </tr>
+  </table>
+</div>";
 ?>

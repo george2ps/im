@@ -201,6 +201,18 @@ body{
 	background-color:#FFFFFF;
 }
 
+#client_insurance_details_table{
+	 border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+#client_insurance_details_table td, th{
+	  text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even){background-color:#F8F8F8}
+
 /*Responsive Design*/
 
 @media only screen and (max-device-width: 600px) {

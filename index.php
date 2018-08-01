@@ -439,7 +439,7 @@ $(document).ready(function(){
 		<div id="clientButtonDiv">
 			<button class="clientButtons">New Insurance</button>
 			<button class="clientButtons">Payments</button>
-			<button class="clientButtons">Balance</button>
+			<button class="clientButtons" style="width: 140px;">Customer Details</button>
 			<button id="editClientButton" class="clientButtons" onClick="editClient()">Edit Client</button>
 
 				
